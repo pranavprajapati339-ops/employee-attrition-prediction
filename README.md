@@ -106,7 +106,7 @@ This tool is for educational and portfolio purposes only. It should not be used 
 
 ## Links
 
-- **Live demo:**[Click here to see live demo.](https://pranavprajapati339-ops-employee-attrition-prediction-app-yy9vsk.streamlit.app/)
+- **Live demo:** [Click here to see live demo.](https://pranavprajapati339-ops-employee-attrition-prediction-app-yy9vsk.streamlit.app/)
 - **Training notebook:** [Colab Notebook](https://colab.research.google.com/drive/12uuN8lBfO4H8P87j3sgN7HNn-8p-O-iE?usp=sharing)
 
 ## Author
