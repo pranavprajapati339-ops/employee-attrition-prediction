@@ -39,7 +39,15 @@ Four supervised learning algorithms were trained on the same SMOTE-balanced trai
 
 **XGBoost was selected as the final model**, achieving the best F1-score and ROC-AUC - the two most reliable metrics given the class imbalance (accuracy alone is misleading, since a model predicting "No attrition" for everyone would still score ~84%).
 
-## Final Model Performance (XGBoost, default config)
+## Hyperparameter Tuning
+
+Hyperparameter tuning was explored using GridSearchCV and RandomizedSearchCV (with SMOTE applied inside a pipeline, per fold, to avoid leakage across cross-validation splits). Multiple parameter grids and scoring metrics (F1, ROC-AUC) were tested.
+
+Result: tuned models consistently underperformed the baseline XGBoost configuration on the held-out test set, likely due to the small minority class size (188 attrition cases) causing tuning to overfit to cross-validation folds. The baseline configuration was retained as the final model — a deliberate, evidence-based decision rather than an assumption that tuning always helps.
+
+## Final Model Performance
+
+Configuration: n_estimators=100, learning_rate=0.1, max_depth=7, gamma=0.1
 
 ```
               precision    recall  f1-score   support
@@ -107,7 +115,7 @@ This tool is for educational and portfolio purposes only. It should not be used 
 ## Links
 
 - **Live demo:** [Click here to see live demo.](https://pranavprajapati339-ops-employee-attrition-prediction-app-yy9vsk.streamlit.app/)
-- **Training notebook:** [Colab Notebook](https://colab.research.google.com/drive/12uuN8lBfO4H8P87j3sgN7HNn-8p-O-iE?usp=sharing)
+- **Training notebook:** [Google Colab](https://colab.research.google.com/drive/12uuN8lBfO4H8P87j3sgN7HNn-8p-O-iE?usp=sharing)
 
 ## Author
 
