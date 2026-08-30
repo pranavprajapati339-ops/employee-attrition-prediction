@@ -4,7 +4,7 @@ A machine learning project that predicts the likelihood of an employee leaving a
 
 ## Overview
 
-This project takes employee attributes — job satisfaction, income, overtime status, tenure, and more — and predicts whether an employee is at **High Risk** or **Low Risk** of attrition, along with a probability score.
+This project takes employee attributes - job satisfaction, income, overtime status, tenure, and more - and predicts whether an employee is at **High Risk** or **Low Risk** of attrition, along with a probability score.
 
 Beyond just training a single model, this project focuses on a full ML workflow: handling class imbalance, comparing algorithms fairly, evaluating with the right metrics, and being transparent about what hyperparameter tuning did (and didn't) improve.
 
@@ -12,14 +12,14 @@ Beyond just training a single model, this project focuses on a full ML workflow:
 
 - **Source:** IBM HR Analytics Employee Attrition Dataset (Kaggle)
 - **Rows:** 1,470 employee records
-- **Target:** `Attrition` (Yes/No) — imbalanced at ~84% No / ~16% Yes
+- **Target:** `Attrition` (Yes/No) - imbalanced at ~84% No / ~16% Yes
 - **Features used:** Age, Gender, Department, JobRole, JobLevel, JobInvolvement, JobSatisfaction, EnvironmentSatisfaction, RelationshipSatisfaction, OverTime, DistanceFromHome, BusinessTravel, StockOptionLevel, MonthlyIncome, TrainingTimesLastYear, YearsAtCompany, YearsWithCurrManager, YearsSinceLastPromotion
 
 ## Preprocessing
 
 - Categorical features (`Department`, `JobRole`, `BusinessTravel`) one-hot encoded
 - Binary features (`Gender`, `OverTime`) label-encoded
-- Numerical features scaled with `StandardScaler` — **fit only on the training set** and applied to test data separately, to avoid data leakage
+- Numerical features scaled with `StandardScaler` - **fit only on the training set** and applied to test data separately, to avoid data leakage
 - Data split into train/test **before** scaling and resampling, to keep evaluation honest
 
 ## Handling Class Imbalance
@@ -37,13 +37,7 @@ Four supervised learning algorithms were trained on the same SMOTE-balanced trai
 | Random Forest | 0.833 | 0.458 | 0.234 | 0.310 | 0.591 |
 | **XGBoost** | **0.847** | **0.528** | **0.404** | **0.458** | **0.668** |
 
-**XGBoost was selected as the final model**, achieving the best F1-score and ROC-AUC — the two most reliable metrics given the class imbalance (accuracy alone is misleading, since a model predicting "No attrition" for everyone would still score ~84%).
-
-## Hyperparameter Tuning
-
-Hyperparameter tuning was explored using `GridSearchCV` and `RandomizedSearchCV` (with SMOTE applied inside a pipeline, per fold, to avoid leakage across cross-validation splits). Multiple parameter grids and scoring metrics (F1, ROC-AUC) were tested.
-
-**Result:** tuned models consistently underperformed the default XGBoost configuration on the held-out test set, likely due to the small minority class size (188 attrition cases) causing tuning to overfit to cross-validation folds. **The default configuration was retained as the final model** — a deliberate, evidence-based decision rather than a default assumption that tuning always helps.
+**XGBoost was selected as the final model**, achieving the best F1-score and ROC-AUC - the two most reliable metrics given the class imbalance (accuracy alone is misleading, since a model predicting "No attrition" for everyone would still score ~84%).
 
 ## Final Model Performance (XGBoost, default config)
 
@@ -112,9 +106,9 @@ This tool is for educational and portfolio purposes only. It should not be used 
 
 ## Links
 
-- **Live demo:** _add your Streamlit Cloud link here after deployment_
+- **Live demo:**[Click here to see live demo.](https://pranavprajapati339-ops-employee-attrition-prediction-app-yy9vsk.streamlit.app/)
 - **Training notebook:** [Colab Notebook](https://colab.research.google.com/drive/12uuN8lBfO4H8P87j3sgN7HNn-8p-O-iE?usp=sharing)
 
 ## Author
 
-**Pranav** — BCA (AI & Data Science), Graphic Era Deemed to be University
+**Pranav** - Data Science, Machine Learning & AI
